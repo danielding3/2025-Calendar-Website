@@ -11,6 +11,16 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        muted: "var(--muted)",
+        accent: "var(--accent)",
+      },
+      fontFamily: {
+        oracle: ['ABCOracle', 'system-ui', 'sans-serif'],
+        gramercy: ['ABCGramercy', 'system-ui', 'sans-serif'],
+      },
+      fontWeight: {
+        normal: '400',
+        bold: '700',
       },
     },
   },

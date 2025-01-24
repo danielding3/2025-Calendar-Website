@@ -1,21 +1,49 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import '../app.css';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Custom font import */
+@font-face {
+  font-family: 'ABCOracle';
+  src: 
+       url('/fonts/ABCOracle-Light.woff') format('woff');
+  font-weight: light;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ABCGramercy';
+  src:  url('/fonts/ABCGramercy-Light-Trial.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ABCOracle';
+  src: url('/fonts/ABCOracle-Regular.woff2') format('woff2'),
+       url('/fonts/ABCOracle-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ABCOracle';
+  src: url('/fonts/ABCOracle-Bold.woff2') format('woff2'),
+       url('/fonts/ABCOracle-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --muted: #737373;
+  --accent: #ffffff;
+  --font-primary: 'ABCGracmercy', 'ABCOracle', system-ui, sans-serif;
 }
 
 body {
-  color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--foreground);
+  min-height: 100vh;
+  font-family: var(--font-primary);
 }
