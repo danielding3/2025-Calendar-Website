@@ -10,6 +10,11 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2023-10-16',
 });
 
+interface CartItem {
+  price_id: string;
+  quantity: number;
+}
+
 export async function POST(req: Request) {
   try {
     const { items } = await req.json();
@@ -22,7 +27,7 @@ export async function POST(req: Request) {
     }
 
     const session = await stripe.checkout.sessions.create({
-      line_items: items.map(item => ({
+      line_items: items.map((item: CartItem) => ({
         price: item.price_id,
         quantity: item.quantity,
       })),
