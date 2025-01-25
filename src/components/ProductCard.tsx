@@ -35,6 +35,22 @@ export default function ProductCard({ name, description, variants, printedInfo, 
   const [isAddingToCart, setIsAddingToCart] = useState(false);
   const { state, dispatch } = useCart();
 
+  const ImagePreloader = ({ images }: { images: string[] }) => {
+    return (
+      <div className="hidden">
+        {images.map((src, index) => (
+          <Image
+            key={src}
+            src={src}
+            alt="preload"
+            width={2000}
+            height={2000}
+          />
+        ))}
+      </div>
+    );
+  };
+
   const handlers = useSwipeable({
     onSwipedLeft: () => nextImage(),
     onSwipedRight: () => previousImage(),
@@ -158,6 +174,7 @@ export default function ProductCard({ name, description, variants, printedInfo, 
                     className="object-contain w-full h-full"
                     width={2000}
                     height={2000}
+                    priority={true}
                   />
                 </div>
                 {selectedVariant.images.length > 1 && (
