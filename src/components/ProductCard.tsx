@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { useCart } from '@/context/CartContext';
 import { loadStripe } from '@stripe/stripe-js';
 import { ChevronRight, ChevronLeft } from '@geist-ui/icons';
+import { useSwipeable } from 'react-swipeable';
+
 
 import Image from 'next/image';
 
@@ -24,6 +26,7 @@ interface ProductCardProps {
   onAddToCart: () => void;
 }
 
+
 export default function ProductCard({ name, description, variants, printedInfo, onAddToCart }: ProductCardProps) {
   const [selectedVariant, setSelectedVariant] = useState(variants[0]);
   const [quantity, setQuantity] = useState(1);
@@ -31,6 +34,13 @@ export default function ProductCard({ name, description, variants, printedInfo, 
   const [isLoading, setIsLoading] = useState(false);
   const [isAddingToCart, setIsAddingToCart] = useState(false);
   const { state, dispatch } = useCart();
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => nextImage(),
+    onSwipedRight: () => previousImage(),
+    preventScrollOnSwipe: true,
+    trackMouse: false
+  });
 
   // Check if current variant is in cart
   const isInCart = state.items.some(item => item.price_id === selectedVariant.price_id);
@@ -141,13 +151,15 @@ export default function ProductCard({ name, description, variants, printedInfo, 
           <div className="relative aspect-[2/3] bg-black object-contain bg-none max-w-full">
             {selectedVariant.images && selectedVariant.images.length > 0 ? (
               <>
-                <Image
-                  src={selectedVariant.images[currentImageIndex]}
-                  alt={`${name} - ${selectedVariant.title}`}
-                  className="object-contain w-full h-full"
-                  width={2000}
-                  height={2000}
-                />
+                <div {...handlers}>
+                  <Image
+                    src={selectedVariant.images[currentImageIndex]}
+                    alt={`${name} - ${selectedVariant.title}`}
+                    className="object-contain w-full h-full"
+                    width={2000}
+                    height={2000}
+                  />
+                </div>
                 {selectedVariant.images.length > 1 && (
                   <>
                     <button

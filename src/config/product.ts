@@ -5,7 +5,7 @@ export const PRODUCT_DATA = {
   variants: [
     {
       title: "2025 Calendar Poster - Bubblegum",
-      price_id: "price_1Ql4PsB6Lzu30SAxKgX6X6zW",
+      price_id: "price_1Ql5JAB6Lzu30SAxCKDUXrPZ",
       price: 1500, // Price in USD cents
       images: [
         "/images/blue-and-pink.png",
@@ -15,7 +15,7 @@ export const PRODUCT_DATA = {
     },
     {
       title: "2025 Calendar Poster - Metallic Gold",
-      price_id: "price_1Ql4PsB6Lzu30SAxQkIWoKAY",
+      price_id: "price_1Ql5I4B6Lzu30SAxjsYTtf7X",
       price: 1500, // Price in USD cents
       images: [
         "/images/blue-and-gold.png",
