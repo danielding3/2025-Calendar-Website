@@ -7,7 +7,7 @@ import { ChevronRight, ChevronLeft } from '@geist-ui/icons';
 
 import Image from 'next/image';
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY_LIVE!);
 
 interface Variant {
   title: string;
@@ -114,6 +114,7 @@ export default function ProductCard({ name, description, variants, printedInfo, 
       }
     } catch (err) {
       console.error('Error:', err);
+      console.log('Error data:', err);
       alert('Something went wrong. Please try again.');
     } finally {
       setIsLoading(false);
@@ -189,7 +190,7 @@ export default function ProductCard({ name, description, variants, printedInfo, 
           <div className="font-oracle font-light mb-10">
             <h3 className=" mb-4">Specifications</h3>
             <p className="mb-8 whitespace-pre leading-tight">{description}</p>
-            <p className="leading-[1.25]">{printedInfo}</p>
+            <p className="leading-[1.25] whitespace-pre-wrap">{printedInfo}</p>
           </div>
           
           {/* Variant Selection */}
@@ -246,7 +247,7 @@ export default function ProductCard({ name, description, variants, printedInfo, 
                 <div className="text-base text-white text-right">
                   TOTAL &nbsp; &nbsp; {formatPrice(selectedVariant.price * quantity)}
                 </div>
-                <p className="text-sm text-white opacity-40">Shipping will be calculated at checkout</p>
+                <p className="text-xs md:text-sm leading-tight text-white opacity-40 text-right">Shipping will be calculated at checkout</p>
               </div>
             </div>
           </div>

@@ -44,14 +44,13 @@ export default function SuccessPage() {
             />
           </svg>
         </div>
-        <h1 className="text-4xl font-bold mb-4">Thank you for your purchase!</h1>
+        <h1 className="text-xl mb-4">Thank you for your purchase!</h1>
         <p className="text-gray-600 mb-8">
-          We&apos;ll send you an email with your order details shortly.
-          If you chose to pickup in NYC, please check your email for pickup details over the next 2 days. Note that I'll be leaving NYC on January 29th, so pickup will have to be done before then. 
+          I&apos;ll send you an email with your order details shortly.
         </p>
         <Link
           href="/"
-          className="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition"
+          className=" text-white py-2 px-4 hover:bg-white hover:text-black transition"
         >
           Back to Store
         </Link>
