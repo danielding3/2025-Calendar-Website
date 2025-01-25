@@ -35,6 +35,7 @@ export async function POST(req: Request) {
       success_url: `${req.headers.get('origin')}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.get('origin')}?canceled=true`,
       currency: 'usd',
+      allow_promotion_codes: true,
       shipping_address_collection: {
         allowed_countries: ['US'],
       },
