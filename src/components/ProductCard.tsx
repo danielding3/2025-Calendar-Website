@@ -202,7 +202,7 @@ export default function ProductCard({ name, description, variants, printedInfo, 
           <div className="font-oracle font-light mb-10">
             <h3 className=" mb-4">Specifications</h3>
             <p className="mb-8 whitespace-pre leading-tight">{description}</p>
-            <p className="leading-[1.25] whitespace-pre-wrap">{printedInfo}</p>
+            <p className="leading-[1.25] whitespace-pre-wrap" dangerouslySetInnerHTML={{__html: printedInfo}}></p>
           </div>
           
           {/* Variant Selection */}

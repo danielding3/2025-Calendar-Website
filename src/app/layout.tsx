@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-oracle mb-8">
+      <body className="font-oracle font-light mb-8">
         <CartProvider>
           {children}
         </CartProvider>

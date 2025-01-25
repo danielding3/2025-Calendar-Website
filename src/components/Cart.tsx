@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { useCart } from '@/context/CartContext';
 
@@ -13,6 +13,11 @@ interface CartProps {
 export function Cart({ onCheckoutComplete }: CartProps) {
   const { state, dispatch } = useCart();
   const [isLoading, setIsLoading] = useState(false);
+
+  // Resets loading state when user returns to cart from an abandoned checkout
+  useEffect(() => {
+    setIsLoading(false);
+  },[])
 
   const formatPrice = (amount: number) => {
     return new Intl.NumberFormat('en-US', {
@@ -58,7 +63,7 @@ export function Cart({ onCheckoutComplete }: CartProps) {
       }
     } catch (err) {
       console.error('Error:', err);
-      alert('Something went wrong. Please try again.');
+      alert('Something went wrong - Please send me a message on Instagram and I will get you sorted out!');
     } finally {
       setIsLoading(false);
     }
