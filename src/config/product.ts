@@ -19,6 +19,7 @@ export const PRODUCT_DATA = {
       price: 1500, // Price in USD cents
       images: [
         "/images/blue-and-gold.png",
+        "/images/blue-and-gold-mockup.png",
       ]
     }
   ]
