@@ -22,7 +22,7 @@ export const PRODUCT_DATA = {
         "/images/blue-and-gold.png",
         "/images/blue-and-gold-mockup.png",
       ],
-      soldOut: false,
+      soldOut: true,
     }
   ]
 }; 
