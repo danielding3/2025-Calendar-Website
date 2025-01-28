@@ -11,7 +11,8 @@ export const PRODUCT_DATA = {
         "/images/blue-and-pink.png",
         "/images/blue-and-pink-mockup.png",
         '/images/blue-and-pink-mockup-2.png'
-      ]
+      ],
+      soldOut: true,
     },
     {
       title: "2025 Calendar Poster - Metallic Gold",
@@ -20,7 +21,8 @@ export const PRODUCT_DATA = {
       images: [
         "/images/blue-and-gold.png",
         "/images/blue-and-gold-mockup.png",
-      ]
+      ],
+      soldOut: false,
     }
   ]
 }; 

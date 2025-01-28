@@ -16,6 +16,7 @@ interface Variant {
   price_id: string;
   price: number;
   images: string[];
+  soldOut?: boolean;
 }
 
 interface ProductCardProps {
@@ -240,7 +241,7 @@ export default function ProductCard({ name, description, variants, printedInfo, 
             > 
               {variants.map((variant) => (
                 <option key={variant.title} value={variant.title}>
-                  {variant.title} - {formatPrice(variant.price)}
+                  {variant.title} - {variant.soldOut ? 'SOLD OUT' : formatPrice(variant.price)}
                 </option>
               ))}
             </select>
@@ -285,14 +286,19 @@ export default function ProductCard({ name, description, variants, printedInfo, 
           <div className="grid grid-cols-1 gap-4">
             <button
               onClick={handleAddToCart}
-              disabled={isAddingToCart && !isInCart}
-              className={`w-full relative py-2 px-6 text-lg font-semibold transition-all duration-300 
+              disabled={(isAddingToCart && !isInCart) || selectedVariant.soldOut}
+              className={`w-full relative py-2 px-6 text-lg font-semibold transition-all duration-300 disabled:bg-black disabled:text-white
                 ${isInCart 
                   ? 'bg-white text-black border-2 border-white hover:bg-black hover:text-white' 
                   : 'bg-white text-black border-2 border-white hover:bg-gray-100'}`}
             >
               <span className={`transition-opacity duration-300 ${isAddingToCart && !isInCart ? 'opacity-0' : 'opacity-100'}`}>
-                {isInCart ? 'Proceed to Checkout' : 'Add to Cart'}
+                {selectedVariant.soldOut
+                  ? 'Sold Out'
+                  : isInCart 
+                    ? 'Proceed to Checkout' 
+                    : 'Add to Cart'
+                }
               </span>
               {/* Spinner */}
               {isAddingToCart && !isInCart && (
